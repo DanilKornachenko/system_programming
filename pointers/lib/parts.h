@@ -1,5 +1,7 @@
-#ifndef PART_1_H
-#define PART_1_H
+#ifndef PARTS_H
+#define PARTS_H
+
+#include <stdlib.h>
 
 typedef struct linked_list
 {
@@ -35,5 +37,17 @@ void part7();
 void part8();
 
 void part9();
+
+void part10();
+
+void part11();
+
+void part12();
+
+int* alloc_int(size_t n);
+
+int* malloc_int(size_t n);
+
+char* strcopy(const char* src);
 
 #endif

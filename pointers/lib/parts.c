@@ -1,4 +1,4 @@
-#include "part1.h"
+#include "parts.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,6 +30,7 @@ void part2()
     printf("%d ", array[i]);
   }
   putc('\n', stdout);
+  free(array);
 }
 
 void part3()
@@ -241,4 +242,77 @@ void clean_list(linked_list *head)
     free(head->left);
   }
   free(head);
+}
+
+void part10()
+{
+  int* array = alloc_int(10);
+  printf("array = ");
+  for (int i = 0; i < 10; i++)
+  {
+    printf("%d ", array[i]);
+  }
+  putc('\n', stdout);
+  free(array);
+}
+
+void part11()
+{
+  int* array = malloc_int(10);
+  if (array == NULL)
+    perror("Array not allocated!\n");
+  else
+  {
+	  printf("array = ");
+	  for (int i = 0; i < 10; i++)
+	  {
+	    printf("%d ", array[i]);
+	  }
+	  putc('\n', stdout);
+	  free(array);
+  }
+}
+
+int* alloc_int(size_t n)
+{
+  int* array = (int*)calloc(n, sizeof(int));
+  for (int i = 0; i < n; i++)
+  {
+    array[i] = randint(1, 100);
+  }
+
+  return array;
+}
+
+int* malloc_int(size_t n)
+{
+  int* array = (int*)malloc(sizeof(int) * n);
+
+  if (array == NULL)
+    return NULL;
+
+  for (int i = 0; i < n; i++)
+  {
+    array[i] = randint(1, 100);
+  }
+
+  return array;
+}
+
+void part12()
+{
+  char* hello = strcopy("Hello world!");
+  printf("%s\n", hello);
+  free(hello);
+}
+
+char* strcopy(const char* src)
+{
+  size_t s = strlen(src);
+  char* dst = (char*)calloc(s + 1, sizeof(char));
+  for (int i = 0; i < s; i++)
+  {
+    dst[i] = src[i];
+  }
+  return dst;
 }
